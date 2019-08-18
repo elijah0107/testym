@@ -1,12 +1,28 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
+import App from './Connector';
 import * as serviceWorker from './serviceWorker';
+import { createStore } from './service/store';
+import { createWatcher } from './sagas/_index';
+import { createAPI } from './service/api';
+import { Provider } from 'react-redux';
+import { createBrowserHistory } from 'history';
+import reducer from './reducers/_index';
 
-ReactDOM.render(<App />, document.getElementById('root'));
-
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();
+document.addEventListener('DOMContentLoaded', () => {
+  const history = createBrowserHistory();
+  const store = createStore(reducer, createWatcher({
+    api: createAPI(),
+    history,
+  }));
+  ReactDOM.render(
+    (
+      <Provider store={store}>
+        <App />
+      </Provider>
+    ),
+    document.getElementById('root'),
+  );
+  serviceWorker.unregister();
+});

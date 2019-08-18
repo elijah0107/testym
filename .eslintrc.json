@@ -1,0 +1,142 @@
+{
+    "env": {
+        "node": true,
+        "browser": true,
+        "commonjs": true,
+        "es6": true
+    },
+    "extends": [
+        "eslint:recommended",
+        "plugin:react/recommended"
+    ],
+    "parser": "babel-eslint",
+    "parserOptions": {
+        "ecmaFeatures": {
+            "jsx": true
+        },
+        "ecmaVersion": 2018,
+        "sourceType": "module"
+    },
+    "plugins": [
+        "react"
+    ],
+    "rules": {
+        "eol-last": [
+            "error",
+            "always"
+        ],
+        "no-new-wrappers": "error",
+        "no-multiple-empty-lines": [
+            "error",
+            {
+                "max": 1,
+                "maxBOF": 1
+            }
+        ],
+        "indent": [
+            "error",
+            2,
+            {
+                "SwitchCase": 1,
+                "MemberExpression": 1,
+                "ObjectExpression": 1,
+                "ignoredNodes": [
+                    "TemplateLiteral *"
+                ]
+            }
+        ],
+        "linebreak-style": [
+            "error",
+            "unix"
+        ],
+        "quotes": [
+            "error",
+            "single"
+        ],
+        "semi": [
+            "error",
+            "always"
+        ],
+        "space-in-parens": [
+            "error",
+            "never"
+        ],
+        "space-before-function-paren": [
+            "error",
+            "always"
+        ],
+        "object-curly-spacing": [
+            "error",
+            "always"
+        ],
+        "generator-star-spacing": [
+            "error",
+            {
+                "before": false,
+                "after": true
+            }
+        ],
+        "jsx-quotes": [
+            "error",
+            "prefer-single"
+        ],
+        "react/no-children-prop": 0,
+        "react/prop-types": 0,
+        "react/no-unescaped-entities": 0,
+        "react/jsx-equals-spacing": [2, "never"],
+        "react/jsx-wrap-multilines": [
+            "error",
+            {
+                "declaration": "parens-new-line",
+                "assignment": "parens-new-line",
+                "return": "parens-new-line",
+                "arrow": "parens-new-line",
+                "condition": "parens-new-line",
+                "logical": "parens-new-line",
+                "prop": "parens-new-line"
+            }
+        ],
+        "comma-dangle": [
+            "error",
+            {
+                "arrays": "always-multiline",
+                "objects": "always-multiline",
+                "imports": "always-multiline",
+                "exports": "always-multiline",
+                "functions": "ignore"
+            }
+        ],
+        "valid-jsdoc": [
+            "error",
+            {
+                "prefer": {
+                    "arg": "param",
+                    "argument": "param",
+                    "class": "constructor",
+                    "virtual": "abstract",
+                    "returns": "returns"
+                },
+                "preferType": {
+                    "any": "*",
+                    "Null": "null",
+                    "Undefined": "undefined",
+                    "Boolean": "boolean",
+                    "Number": "number",
+                    "int": "number",
+                    "integer": "number",
+                    "float": "number",
+                    "String": "string",
+                    "Symbol": "symbol",
+                    "object": "Object",
+                    "array": "Array",
+                    "function": "Function"
+                },
+                "requireReturn": false,
+                "requireReturnType": true,
+                "requireParamType": true,
+                "requireParamDescription": true,
+                "requireReturnDescription": true
+            }
+        ]
+    }
+}
