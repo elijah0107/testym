@@ -5,6 +5,7 @@ import {
   selectInputValue,
   selectError,
   selectSearchData,
+  selectAddressesList,
 } from './selectors';
 
 /**
@@ -17,6 +18,7 @@ const mapStateToProps = state => {
     inputValue: selectInputValue(state),
     error: selectError(state),
     searchData: selectSearchData(state),
+    addressesList: selectAddressesList(state),
   };
 };
 
@@ -27,6 +29,7 @@ const mapStateToProps = state => {
  */
 const mapDispatchToProps = dispatch => ({
   onChangeInput: event => event && event.target && dispatch(SearchCreators.setQuery(event.target.value)),
+  setAddress: (address) => dispatch(SearchCreators.selectAddress(address)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);

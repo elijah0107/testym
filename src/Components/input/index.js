@@ -3,48 +3,20 @@ import Autocomplete from 'react-autocomplete';
 
 const Input = ({
   value = '',
-  items = [],
-  onChange,
+  onChange = () => {},
   isFetching = false,
+  items,
+  onSelect,
 }) => {
   return (
     <Autocomplete
-      getItemValue={(item) => item.label}
-      items={items}
-      renderItem={(item, isHighlighted) => (
-        <div style={{ background: isHighlighted ? 'lightgray' : 'white' }}>
-          {item.label}
-        </div>
-      )}
-      renderMenu={renderSuggestionsPopup(items, value, isFetching)}
+      getItemValue={(item) => item.address}
+      items={Array.isArray(items) ? items.map(item => item) : []}
+      renderItem={ (item, active) => <div style={{ background: active ? 'lightgray' : 'white' }}>{ item.address }</div> }
       value={value}
       onChange={onChange}
-      onSelect={(val) => value = val}
+      onSelect={(address) => onSelect(address)}
     />
-  );
-};
-
-/**
- * Возвращает элемент попапа подсказок.
- * @param {ReactElement[]} items Массив элементов подсказок.
- * @param {string} value Введённое значение дял поиска.
- * @param {boolean} isFetching Идет ли в данный момент загрузка.
- * @returns {ReactElement} Элемент попапа подсказок.
- */
-export const renderSuggestionsPopup = (items, value, isFetching) => {
-  // @todo использовать <Popup />
-  return (
-    <div className='b-popup'>
-      {Boolean(!items.length) && (
-        <span className='dadata-popup-tooltip'>
-          {/*{Boolean(isFetching) && (*/}
-          {/*  <Preloader size={SIZES.small} />*/}
-          {/*)}*/}
-          {Boolean(!isFetching && value) && 'Неизвестный адрес'}
-        </span>
-      )}
-      {items}
-    </div>
   );
 };
 

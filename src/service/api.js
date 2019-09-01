@@ -11,8 +11,11 @@ export const createAPI = () => {
   });
 
   return {
-    getSuggest: ({ query }) => {
-      return api.get(`https://geocode-maps.yandex.ru/1.x/?csp=true&format=jsonp&geocode=${query}`);
+    postDaData: (payload, type) => {
+      const API_KEY = 'b6804756d81c2235d9ca9ccac2e9b4a376859d98';
+      return api.post(`https://suggestions.dadata.ru/suggestions/api/4_1/rs/suggest/${type || 'address'}`,
+        { count: 5, ...payload },
+        { headers: { 'Authorization': 'Token ' + API_KEY }, withCredentials: false });
     },
   };
 };

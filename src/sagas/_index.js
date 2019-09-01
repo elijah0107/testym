@@ -1,4 +1,4 @@
-import { all, debounce } from 'redux-saga/effects';
+import { all, debounce, takeLatest } from 'redux-saga/effects';
 
 // типы действий
 import { Types as SearchType } from '../reducers/search';
@@ -24,6 +24,7 @@ export function createWatcher (options = {}) {
  */
 export default function* watch (options = {}) {
   yield all([
-    debounce(500, SearchType.SET_QUERY, SearchSagas.request),
+    debounce(500, SearchType.SET_QUERY, SearchSagas.request, options),
+    takeLatest(SearchType.SELECT_ADDRESS, SearchSagas.selectAddress),
   ]);
 }

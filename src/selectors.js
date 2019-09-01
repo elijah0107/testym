@@ -21,6 +21,13 @@ export const selectError = state => get(state, 'notice.error', '');
  * @returns {Object} Данные формы заказа.
  */
 export const selectSearchData = state => get(state, 'search.data', []);
+
+/**
+ * Возвращает данные которые вернулись из апи.
+ * @param {Object} state Состояние приложения.
+ * @returns {Object} Данные формы заказа.
+ */
+export const selectAddressesList = state => get(state, 'search.addressesList', []);
 //
 // /**
 //  * Возвращает данные значения комментария в заказе.
